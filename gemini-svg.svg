@@ -1,0 +1,296 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 920" width="100%" height="100%" style="background:#16181d; font-family: &#39;Segoe UI&#39;, Arial, sans-serif;">
+  <defs>
+    <!-- Металл DIN-рейки -->
+    <linearGradient id="din" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#607d8b" />
+      <stop offset="25%" stop-color="#b0bec5" />
+      <stop offset="50%" stop-color="#78909c" />
+      <stop offset="75%" stop-color="#b0bec5" />
+      <stop offset="100%" stop-color="#455a64" />
+    </linearGradient>
+    
+    <!-- Тень модулей -->
+    <filter id="shadow" x="-5%" y="-5%" width="112%" height="112%">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Заголовок -->
+  <text x="600" y="38" fill="#eceff1" font-size="21" font-weight="bold" text-anchor="middle" letter-spacing="0.5">СХЕМА ЩИТКА (БЕЗ ПЕРЕСЕЧЕНИЙ ЛИНИЙ И НАЛОЖЕНИЙ)</text>
+
+  <!-- DIN-РЕЙКА -->
+  <rect x="70" y="350" width="1080" height="46" rx="3" fill="url(#din)" stroke="#263238" stroke-width="1.5" />
+  <line x1="70" y1="356" x2="1150" y2="356" stroke="#37474f" stroke-width="2" />
+  <line x1="70" y1="390" x2="1150" y2="390" stroke="#37474f" stroke-width="2" />
+
+  <!-- ==================== ШИНЫ ==================== -->
+
+  <!-- ОБЩАЯ ШИНА N (Вводная) -->
+  <g filter="url(#shadow)">
+    <rect x="290" y="75" width="220" height="34" rx="4" fill="#0288d1" stroke="#01579b" stroke-width="2" />
+    <text x="400" y="97" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">ОБЩАЯ ШИНА N (ВВОДНАЯ)</text>
+    <circle cx="310" cy="92" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="340" cy="92" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="430" cy="92" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="480" cy="92" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+  </g>
+
+  <!-- ИЗОЛИРОВАННАЯ ШИНА N2 (после УЗО 2) -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="600" width="370" height="34" rx="4" fill="#0288d1" stroke="#01579b" stroke-width="2" />
+    <text x="945" y="622" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">ИЗОЛИРОВАННАЯ ШИНА N2 (РОЗЕТКИ И СВЕТ)</text>
+    <circle cx="780" cy="617" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="825" cy="617" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="875" cy="617" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="925" cy="617" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="980" cy="617" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="1040" cy="617" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+  </g>
+
+  <!-- ГЛАВНАЯ ШИНА PE (ЗЕМЛЯ) -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="745" width="1070" height="34" rx="4" fill="#fbc02d" stroke="#f57f17" stroke-width="2" />
+    <rect x="70" y="757" width="1070" height="10" fill="#388e3c" />
+    <text x="605" y="768" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle" stroke="#212121" stroke-width="0.5">ГЛАВНАЯ ЗАЗЕМЛЯЮЩАЯ ШИНА PE (ЕДИНАЯ ДЛЯ ВСЕХ ПОТРЕБИТЕЛЕЙ)</text>
+    <circle cx="90" cy="762" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="480" cy="762" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="800" cy="762" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="855" cy="762" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="910" cy="762" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="965" cy="762" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+    <circle cx="1020" cy="762" r="5" fill="#eceff1" stroke="#263238" stroke-width="1.5" />
+  </g>
+
+  <!-- ==================== АППАРАТЫ НА DIN-РЕЙКЕ ==================== -->
+
+  <!-- 1. ВВОДНОЙ АВТОМАТ 2P (x: 90..165) -->
+  <g filter="url(#shadow)">
+    <rect x="90" y="280" width="75" height="180" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="1.8" />
+    <rect x="102" y="350" width="50" height="40" rx="3" fill="#cfd8dc" stroke="#455a64" />
+    <rect x="112" y="355" width="30" height="30" rx="2" fill="#c62828" />
+    <text x="127" y="325" font-size="11" font-weight="bold" fill="#212121" text-anchor="middle">ВВОД 2P</text>
+    <text x="127" y="415" font-size="9" fill="#546e7a" text-anchor="middle">C40 / C50</text>
+    <circle cx="108" cy="295" r="6" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="146" cy="295" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="108" y="287" font-size="9" font-weight="bold" fill="#c62828" text-anchor="middle">L</text>
+    <text x="146" y="287" font-size="9" font-weight="bold" fill="#1565c0" text-anchor="middle">N</text>
+    <circle cx="108" cy="445" r="6" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="146" cy="445" r="6" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- 2. РЕЛЕ НАПРЯЖЕНИЯ РН-263t (x: 230..315) -->
+  <g filter="url(#shadow)">
+    <rect x="230" y="270" width="85" height="200" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="1.8" />
+    <rect x="242" y="325" width="60" height="32" rx="3" fill="#111111" />
+    <text x="272" y="348" font-size="17" font-weight="bold" fill="#00e676" text-anchor="middle" font-family="monospace">230</text>
+    <text x="272" y="305" font-size="11" font-weight="bold" fill="#0d47a1" text-anchor="middle">РН-263t</text>
+    <text x="272" y="375" font-size="8" fill="#546e7a" text-anchor="middle">Новатек</text>
+    <!-- Клемма 1 (L вход) -->
+    <circle cx="250" cy="285" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="250" y="275" font-size="8" font-weight="bold" fill="#212121" text-anchor="middle">1 (L_вх)</text>
+    <!-- Клемма 3 (N опорный) -->
+    <circle cx="295" cy="285" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="295" y="275" font-size="8" font-weight="bold" fill="#212121" text-anchor="middle">3 (N)</text>
+    <!-- Клемма 2 (L выход) -->
+    <circle cx="250" cy="455" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="250" y="468" font-size="8" font-weight="bold" fill="#212121" text-anchor="middle">2 (L_вых)</text>
+  </g>
+
+  <!-- 3. УЗО 1 (Плита) (x: 370..445) -->
+  <g filter="url(#shadow)">
+    <rect x="370" y="280" width="75" height="180" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="1.8" />
+    <rect x="382" y="350" width="50" height="40" rx="3" fill="#cfd8dc" stroke="#455a64" />
+    <rect x="390" y="355" width="16" height="30" rx="2" fill="#263238" />
+    <circle cx="420" cy="365" r="5" fill="#f44336" />
+    <text x="420" y="380" font-size="7" fill="#212121" text-anchor="middle">T</text>
+    <text x="407" y="320" font-size="11" font-weight="bold" fill="#212121" text-anchor="middle">УЗО 1</text>
+    <text x="407" y="335" font-size="9" fill="#0277bd" text-anchor="middle">ПЛИТА 30мА</text>
+    <circle cx="388" cy="295" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="388" y="287" font-size="9" font-weight="bold" fill="#c62828" text-anchor="middle">L</text>
+    <circle cx="426" cy="295" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="426" y="287" font-size="9" font-weight="bold" fill="#1565c0" text-anchor="middle">N</text>
+    <circle cx="388" cy="445" r="6" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="426" cy="445" r="6" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- 4. АВТОМАТ ПЛИТЫ 1P (x: 490..535) -->
+  <g filter="url(#shadow)">
+    <rect x="490" y="280" width="45" height="180" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="1.8" />
+    <rect x="497" y="350" width="30" height="40" rx="3" fill="#cfd8dc" stroke="#455a64" />
+    <rect x="502" y="355" width="20" height="30" rx="2" fill="#263238" />
+    <text x="512" y="325" font-size="10" font-weight="bold" fill="#212121" text-anchor="middle">АВ 1P</text>
+    <text x="512" y="340" font-size="9" fill="#c62828" text-anchor="middle">C25/C32</text>
+    <circle cx="512" cy="295" r="6" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="512" cy="445" r="6" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- 5. УЗО 2 (Розетки + Свет) (x: 630..705) -->
+  <g filter="url(#shadow)">
+    <rect x="630" y="280" width="75" height="180" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="1.8" />
+    <rect x="642" y="350" width="50" height="40" rx="3" fill="#cfd8dc" stroke="#455a64" />
+    <rect x="650" y="355" width="16" height="30" rx="2" fill="#263238" />
+    <circle cx="680" cy="365" r="5" fill="#f44336" />
+    <text x="680" y="380" font-size="7" fill="#212121" text-anchor="middle">T</text>
+    <text x="667" y="320" font-size="11" font-weight="bold" fill="#212121" text-anchor="middle">УЗО 2</text>
+    <text x="667" y="335" font-size="9" fill="#0277bd" text-anchor="middle">ГРУППА 30мА</text>
+    <circle cx="648" cy="295" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="648" y="287" font-size="9" font-weight="bold" fill="#c62828" text-anchor="middle">L</text>
+    <circle cx="686" cy="295" r="6" fill="#b0bec5" stroke="#37474f" />
+    <text x="686" y="287" font-size="9" font-weight="bold" fill="#1565c0" text-anchor="middle">N</text>
+    <circle cx="648" cy="445" r="6" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="686" cy="445" r="6" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- 6. ГРУППА 5 АВТОМАТОВ 1P С ГРЕБЕНКОЙ (x: 760..1020) -->
+  <!-- Шина-гребенка PIN -->
+  <g id="comb-busbar" filter="url(#shadow)">
+    <rect x="765" y="248" width="260" height="14" rx="2" fill="#c62828" stroke="#8e0000" stroke-width="1.5" />
+    <text x="895" y="259" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">ШИНА-ГРЕБЕНКА 1P (ФАЗА ПОСЛЕ УЗО 2)</text>
+    <rect x="777" y="262" width="6" height="23" fill="#c62828" />
+    <rect x="832" y="262" width="6" height="23" fill="#c62828" />
+    <rect x="887" y="262" width="6" height="23" fill="#c62828" />
+    <rect x="942" y="262" width="6" height="23" fill="#c62828" />
+    <rect x="997" y="262" width="6" height="23" fill="#c62828" />
+  </g>
+
+  <!-- Автомат 1 (Розетки 1) -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="280" width="40" height="180" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.5" />
+    <rect x="765" y="355" width="30" height="35" rx="2" fill="#cfd8dc" />
+    <rect x="770" y="360" width="20" height="25" rx="1" fill="#37474f" />
+    <text x="780" y="325" font-size="9" font-weight="bold" fill="#212121" text-anchor="middle">B16</text>
+    <text x="780" y="340" font-size="8" fill="#00796b" text-anchor="middle">Роз 1</text>
+    <circle cx="780" cy="295" r="5" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="780" cy="445" r="5" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- Автомат 2 (Розетки 2) -->
+  <g filter="url(#shadow)">
+    <rect x="815" y="280" width="40" height="180" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.5" />
+    <rect x="820" y="355" width="30" height="35" rx="2" fill="#cfd8dc" />
+    <rect x="825" y="360" width="20" height="25" rx="1" fill="#37474f" />
+    <text x="835" y="325" font-size="9" font-weight="bold" fill="#212121" text-anchor="middle">B16</text>
+    <text x="835" y="340" font-size="8" fill="#00796b" text-anchor="middle">Роз 2</text>
+    <circle cx="835" cy="295" r="5" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="835" cy="445" r="5" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- Автомат 3 (Розетки 3) -->
+  <g filter="url(#shadow)">
+    <rect x="870" y="280" width="40" height="180" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.5" />
+    <rect x="875" y="355" width="30" height="35" rx="2" fill="#cfd8dc" />
+    <rect x="880" y="360" width="20" height="25" rx="1" fill="#37474f" />
+    <text x="890" y="325" font-size="9" font-weight="bold" fill="#212121" text-anchor="middle">B16</text>
+    <text x="890" y="340" font-size="8" fill="#00796b" text-anchor="middle">Роз 3</text>
+    <circle cx="890" cy="295" r="5" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="890" cy="445" r="5" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- Автомат 4 (Свет 1) -->
+  <g filter="url(#shadow)">
+    <rect x="925" y="280" width="40" height="180" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.5" />
+    <rect x="930" y="355" width="30" height="35" rx="2" fill="#cfd8dc" />
+    <rect x="935" y="360" width="20" height="25" rx="1" fill="#37474f" />
+    <text x="945" y="325" font-size="9" font-weight="bold" fill="#212121" text-anchor="middle">B10</text>
+    <text x="945" y="340" font-size="8" fill="#f57f17" text-anchor="middle">Свет 1</text>
+    <circle cx="945" cy="295" r="5" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="945" cy="445" r="5" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- Автомат 5 (Свет 2) -->
+  <g filter="url(#shadow)">
+    <rect x="980" y="280" width="40" height="180" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.5" />
+    <rect x="985" y="355" width="30" height="35" rx="2" fill="#cfd8dc" />
+    <rect x="990" y="360" width="20" height="25" rx="1" fill="#37474f" />
+    <text x="1000" y="325" font-size="9" font-weight="bold" fill="#212121" text-anchor="middle">B10</text>
+    <text x="1000" y="340" font-size="8" fill="#f57f17" text-anchor="middle">Свет 2</text>
+    <circle cx="1000" cy="295" r="5" fill="#b0bec5" stroke="#37474f" />
+    <circle cx="1000" cy="445" r="5" fill="#b0bec5" stroke="#37474f" />
+  </g>
+
+  <!-- ==================== ПРОВОДКА (БЕЗ ПЕРЕСЕЧЕНИЙ) ==================== -->
+
+  <!-- 1. ВВОДНЫЕ КАБЕЛИ -->
+  <path d="M 108 130 L 108 295" fill="none" stroke="#d32f2f" stroke-width="4" />
+  <text x="100" y="150" fill="#ff5252" font-size="11" font-weight="bold" text-anchor="end">ВВОД ФАЗА (L)</text>
+
+  <path d="M 146 130 L 146 295" fill="none" stroke="#0288d1" stroke-width="4" />
+  <text x="154" y="150" fill="#40c4ff" font-size="11" font-weight="bold" text-anchor="start">ВВОД НОЛЬ (N)</text>
+
+  <!-- Ввод PE: Идет по левому краю щита (x=45) напрямую к шине заземления PE -->
+  <path d="M 45 130 L 45 762 L 90 762" fill="none" stroke="#fbc02d" stroke-width="4" stroke-dasharray="10, 5" />
+  <text x="45" y="115" fill="#ffee58" font-size="11" font-weight="bold" text-anchor="middle">ВВОД PE</text>
+
+  <!-- 2. ВВОДНОЙ 2P -> РН-263t (Вход фазы L_вх) -->
+  <!-- Проходит через нижний коридор y=485, поднимается в межмодульном пространстве x=190 и входит в клемму 1 -->
+  <path d="M 108 445 L 108 485 L 190 485 L 190 220 L 250 220 L 250 285" fill="none" stroke="#d32f2f" stroke-width="3" />
+
+  <!-- 3. ВВОДНОЙ 2P -> ОБЩАЯ ШИНА N -->
+  <!-- Проходит в нижнем коридоре ниже фазы (y=515), поднимается в межмодульном пространстве x=210 и заходит на шину N -->
+  <path d="M 146 445 L 146 515 L 210 515 L 210 92 L 310 92" fill="none" stroke="#0288d1" stroke-width="3" />
+
+  <!-- 4. ОБЩАЯ ШИНА N -> РН-263t (Клемма 3, служебный ноль) -->
+  <path d="M 340 92 L 340 180 L 295 180 L 295 285" fill="none" stroke="#0288d1" stroke-width="2" />
+
+  <!-- 5. ОБЩАЯ ШИНА N -> УЗО 1 (вход N) -->
+  <path d="M 430 92 L 430 295" fill="none" stroke="#0288d1" stroke-width="3" />
+
+  <!-- 6. ОБЩАЯ ШИНА N -> УЗО 2 (вход N) -->
+  <path d="M 480 92 L 480 160 L 686 160 L 686 295" fill="none" stroke="#0288d1" stroke-width="3" />
+
+  <!-- 7. ВЫХОД ФАЗЫ С РН-263t (Клемма 2) -> УЗО 1 и УЗО 2 -->
+  <!-- Опускается в нижний коридор (y=545), разветвляется в межмодульных промежутках: x=345 (к УЗО 1) и x=600 (к УЗО 2) -->
+  <path d="M 250 455 L 250 545 L 345 545 L 345 230 L 388 230 L 388 295" fill="none" stroke="#d32f2f" stroke-width="3" />
+  <path d="M 345 545 L 600 545 L 600 230 L 648 230 L 648 295" fill="none" stroke="#d32f2f" stroke-width="3" />
+  <circle cx="345" cy="545" r="4.5" fill="#d32f2f" />
+
+  <!-- 8. УЗО 1 (выход L) -> АВТОМАТ ПЛИТЫ 1P (вход L) -->
+  <!-- Проходит в межмодульном пространстве x=465, поднимается выше автомата и входит в верхнюю клемму -->
+  <path d="M 388 445 L 388 495 L 465 495 L 465 240 L 512 240 L 512 295" fill="none" stroke="#d32f2f" stroke-width="3" />
+
+  <!-- 9. УЗО 2 (выход L) -> ШИНА-ГРЕБЕНКА 1P -->
+  <!-- Проходит в коридоре x=735 прямо в торец гребенки -->
+  <path d="M 648 445 L 648 495 L 735 495 L 735 255 L 765 255" fill="none" stroke="#d32f2f" stroke-width="3" />
+
+  <!-- 10. УЗО 2 (выход N) -> ИЗОЛИРОВАННАЯ ШИНА N2 -->
+  <path d="M 686 445 L 686 617 L 780 617" fill="none" stroke="#0288d1" stroke-width="3" />
+
+  <!-- ==================== ОТХОДЯЩИЕ ЛИНИИ ==================== -->
+
+  <!-- ЛИНИЯ ПЛИТЫ -->
+  <path d="M 512 445 L 512 835" fill="none" stroke="#d32f2f" stroke-width="3" />
+  <path d="M 426 445 L 426 835" fill="none" stroke="#0288d1" stroke-width="3" />
+  <path d="M 480 762 L 480 835" fill="none" stroke="#fbc02d" stroke-width="3" stroke-dasharray="6, 3" />
+
+  <g filter="url(#shadow)">
+    <rect x="395" y="835" width="150" height="46" rx="5" fill="#212529" stroke="#90a4ae" stroke-width="1.5" />
+    <text x="470" y="863" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">ПЛИТА (3х6)</text>
+  </g>
+
+  <!-- ЛИНИИ 5 НАГРУЗОК (Розетки 1-3, Свет 1-2) -->
+  <!-- Фазы с автоматов -->
+  <path d="M 780 445 L 780 835" fill="none" stroke="#d32f2f" stroke-width="2" />
+  <path d="M 835 445 L 835 835" fill="none" stroke="#d32f2f" stroke-width="2" />
+  <path d="M 890 445 L 890 835" fill="none" stroke="#d32f2f" stroke-width="2" />
+  <path d="M 945 445 L 945 835" fill="none" stroke="#d32f2f" stroke-width="2" />
+  <path d="M 1000 445 L 1000 835" fill="none" stroke="#d32f2f" stroke-width="2" />
+
+  <!-- Нули с изолированной шины N2 -->
+  <path d="M 825 617 L 795 617 L 795 835" fill="none" stroke="#0288d1" stroke-width="2" />
+  <path d="M 875 617 L 850 617 L 850 835" fill="none" stroke="#0288d1" stroke-width="2" />
+  <path d="M 925 617 L 905 617 L 905 835" fill="none" stroke="#0288d1" stroke-width="2" />
+  <path d="M 980 617 L 960 617 L 960 835" fill="none" stroke="#0288d1" stroke-width="2" />
+  <path d="M 1040 617 L 1015 617 L 1015 835" fill="none" stroke="#0288d1" stroke-width="2" />
+
+  <!-- Заземление с шины PE -->
+  <path d="M 800 762 L 810 762 L 810 835" fill="none" stroke="#fbc02d" stroke-width="2" stroke-dasharray="4, 2" />
+  <path d="M 855 762 L 865 762 L 865 835" fill="none" stroke="#fbc02d" stroke-width="2" stroke-dasharray="4, 2" />
+  <path d="M 910 762 L 920 762 L 920 835" fill="none" stroke="#fbc02d" stroke-width="2" stroke-dasharray="4, 2" />
+  <path d="M 965 762 L 975 762 L 975 835" fill="none" stroke="#fbc02d" stroke-width="2" stroke-dasharray="4, 2" />
+  <path d="M 1020 762 L 1030 762 L 1030 835" fill="none" stroke="#fbc02d" stroke-width="2" stroke-dasharray="4, 2" />
+
+  <g filter="url(#shadow)">
+    <rect x="755" y="835" width="295" height="46" rx="5" fill="#212529" stroke="#90a4ae" stroke-width="1.5" />
+    <text x="902" y="863" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">ЛИНИИ НАГРУЗОК (L, N2, PE)</text>
+  </g>
+</svg>
