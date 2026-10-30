@@ -44,7 +44,7 @@
 
     /* Корпус аппарата - 100% непрозрачный индустриальный пластик */
     .breaker-body {
-      background-color: #18181b !important; /* Гарантированная сплошная непрозрачность */
+      background-color: #18181b !important;
       background: linear-gradient(180deg, #27272a 0%, #18181b 60%, #09090b 100%) !important;
       opacity: 1 !important;
       box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -2px 0 rgba(0,0,0,0.8);
@@ -179,20 +179,17 @@
 
     <!-- Верхние действия -->
     <div class="flex items-center gap-2">
-      <!-- Переключатель светлой / темной темы -->
       <button onclick="toggleTheme()" id="themeBtn" title="Переключить тему (Светлая / Темная)" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 flex items-center justify-center transition shadow-sm">
         <svg id="themeIconSun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         <svg id="themeIconMoon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
       </button>
 
-      <!-- Звук -->
       <button id="soundToggleBtn" onclick="toggleSound()" title="Включить/выключить звук расцепителей" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">
         <svg id="soundIcon" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
         </svg>
       </button>
 
-      <!-- Взвести всё -->
       <button onclick="resetAllBreakers()" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 shadow-md transition">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
         <span>Взвести всё</span>
@@ -217,6 +214,9 @@
       </button>
       <button onclick="switchTab('tab-audit')" id="nav-audit" class="tab-btn px-3 py-2 rounded-xl font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 whitespace-nowrap">
         <span>🔍 Инженерный аудит правок</span>
+      </button>
+      <button onclick="switchTab('tab-gemini-svg')" id="nav-gemini-svg" class="tab-btn px-3 py-2 rounded-xl font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 whitespace-nowrap">
+        <span>🖼️ Схема Gemini (SVG)</span>
       </button>
     </nav>
   </div>
@@ -262,7 +262,6 @@
         <div class="text-[10px] text-slate-500 font-mono">Кабель 3х6 мм² (7.3 кВт)</div>
       </div>
 
-
       <div class="app-card bg-slate-900 p-3 rounded-2xl border border-slate-800 flex flex-col justify-between">
         <span class="app-text-muted text-[11px] text-slate-400">Состояние щита</span>
         <div class="flex items-center gap-2 mt-0.5">
@@ -275,17 +274,13 @@
 
     <!-- ВКЛАДКА 1: DIN-РЕЙКА + DRAG & DROP + РЕЖИМ ПРОВОДКИ -->
     <section id="tab-din" class="tab-content block space-y-4">
-      
-      <!-- Панель инструментов: Проводка и действия -->
       <div class="app-card bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm">
         <div class="flex flex-wrap items-center gap-3">
-          <!-- Тумблер проводки -->
           <button onclick="toggleWiringMode()" id="wiringModeToggle" class="px-3.5 py-2 rounded-xl text-xs font-bold border transition flex items-center gap-2 bg-slate-800 border-slate-700 text-slate-200 hover:text-white">
             <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="wiringModeDot"></span>
             <span>Режим «Проводка»</span>
           </button>
 
-          <!-- Выбор цвета провода -->
           <div id="wireColorPicker" class="flex items-center gap-1.5 opacity-40 pointer-events-none transition-all">
             <span class="app-text-muted text-xs text-slate-400 font-mono mr-1">Провод:</span>
             <button onclick="selectWireColor('phase')" id="colorBtnPhase" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-red-600 text-white border-2 border-white shadow-sm flex items-center gap-1">
@@ -313,42 +308,30 @@
         </div>
       </div>
 
-      <!-- Щит и Инспектор -->
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        
-        <!-- Корпус щита (3 колонки) -->
         <div class="app-cabinet lg:col-span-3 bg-gradient-to-b from-slate-900 to-slate-950 p-4 lg:p-6 rounded-3xl border-4 border-slate-800 shadow-2xl relative select-none">
-          
-          <!-- Оверлейный SVG для проводов -->
-          <svg id="wiringCanvasSvg" class="absolute inset-0 w-full h-full pointer-events-none z-30" style="overflow: visible;">
-            <!-- Провода отрисовываются JS -->
-          </svg>
+          <svg id="wiringCanvasSvg" class="absolute inset-0 w-full h-full pointer-events-none z-30" style="overflow: visible;"></svg>
 
-          <!-- РЯД 1: DIN-рейка 1 -->
+          <!-- РЯД 1 -->
           <div class="relative pt-6 pb-4">
             <div class="text-xs font-mono font-bold uppercase tracking-wider text-amber-500 mb-2 flex items-center justify-between">
               <span>Рейка 1: Ввод 63А + РН-263Т + УЗО розеток 63А(А) + УЗО плиты 40А(АС)</span>
               <span id="rail1ModCount" class="text-slate-500 text-[11px] font-mono">8 DIN (Свободно: 4 DIN)</span>
             </div>
-            <!-- Металл DIN-рейки -->
             <div class="absolute top-[58%] left-0 right-0 h-9 din-rail-metal -translate-y-1/2 rounded z-0"></div>
-            <!-- Контейнер модулей 1 ряда с Drag&Drop -->
             <div id="dinRow1" data-row="1" ondragover="handleRailDragOver(event)" ondrop="handleRailDrop(event, 1)" class="relative z-10 flex flex-wrap gap-2 items-center min-h-[220px] p-2 rounded-2xl border border-transparent transition-colors"></div>
           </div>
 
-          <!-- РЯД 2: DIN-рейка 2 -->
+          <!-- РЯД 2 -->
           <div class="relative pt-6 pb-4 border-t border-slate-800/80">
             <div class="text-xs font-mono font-bold uppercase tracking-wider text-sky-500 mb-2 flex items-center justify-between">
               <span>Рейка 2: Автомат плиты C32 + Коридор B16 + Автоматы комнат и света + Шины N и PE</span>
               <span id="rail2ModCount" class="text-slate-500 text-[11px] font-mono">6 DIN + 2 шины DIN (4 мод)</span>
             </div>
-            <!-- Металл DIN-рейки -->
             <div class="absolute top-[58%] left-0 right-0 h-9 din-rail-metal -translate-y-1/2 rounded z-0"></div>
-            <!-- Контейнер модулей 2 ряда с Drag&Drop -->
             <div id="dinRow2" data-row="2" ondragover="handleRailDragOver(event)" ondrop="handleRailDrop(event, 2)" class="relative z-10 flex flex-wrap gap-2 items-center min-h-[220px] p-2 rounded-2xl border border-transparent transition-colors"></div>
           </div>
 
-          <!-- Нижняя панель подсказок -->
           <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
             <div class="flex items-center gap-3">
               <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded status-flag-on"></span> Красный = ВКЛ</span>
@@ -360,10 +343,9 @@
               <span>⚡ Клик по 2 клеммам соединяет их проводом</span>
             </div>
           </div>
-
         </div>
 
-        <!-- Инспектор выбранного аппарата / Клеммы (1 колонка) -->
+        <!-- Инспектор -->
         <div class="app-card lg:col-span-1 bg-slate-900 border border-slate-800 rounded-3xl p-5 flex flex-col justify-between shadow-lg">
           <div>
             <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
@@ -386,7 +368,6 @@
               <div class="app-subcard p-2.5 rounded-xl bg-slate-950 border border-slate-800">
                 <span class="app-text-muted text-slate-500 text-[10px] block font-mono">Подключенные провода:</span>
                 <div id="inspectWiresList" class="text-[11px] font-mono mt-1 space-y-1">
-                  <!-- Динамический список проводов -->
                   <span class="text-slate-500">Нет подключенных проводов</span>
                 </div>
               </div>
@@ -403,9 +384,7 @@
             </button>
           </div>
         </div>
-
       </div>
-
     </section>
 
     <!-- ВКЛАДКА 2: ПРИНЦИПИАЛЬНАЯ СХЕМА -->
@@ -426,11 +405,8 @@
           </div>
         </div>
 
-        <!-- Векторная схема SVG -->
         <div class="w-full overflow-x-auto app-subcard bg-slate-950 rounded-xl p-3 border border-slate-800">
-          <svg id="schematicSvg" viewBox="0 0 1320 910" class="w-full min-w-[1080px] h-auto select-none font-sans text-xs">
-            <!-- Отрисовывается JS -->
-          </svg>
+          <svg id="schematicSvg" viewBox="0 0 1320 910" class="w-full min-w-[1080px] h-auto select-none font-sans text-xs"></svg>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3 mt-4 text-[11px]">
@@ -457,11 +433,10 @@
     <!-- ВКЛАДКА 3: СМЕТА И СПЕЦИФИКАЦИЯ ЗАКУПКИ -->
     <section id="tab-estimate" class="tab-content hidden space-y-6">
       <div class="app-card bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm">
-        
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5 border-b border-slate-800 pb-4">
           <div>
             <h2 class="text-base font-bold">Спецификация модульного оборудования IEK KARAT</h2>
-            <p class="app-text-muted text-xs text-slate-400 mt-1">Официальные каталожные артикулы IEK и Новатэк. УЗО 100мА исключено (экономия ~3 250 ₽).</p>
+            <p class="app-text-muted text-xs text-slate-400 mt-1">Официальные каталожные артикулы IEK и Новатэк. УЗО 100мА исключено.</p>
           </div>
           <div class="bg-amber-500/10 border border-amber-500/30 px-4 py-2 rounded-xl text-right">
             <span class="text-[10px] text-amber-500 uppercase font-mono block">Итого комплектация щита:</span>
@@ -469,7 +444,6 @@
           </div>
         </div>
 
-        <!-- Таблица сметы -->
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs border-collapse">
             <thead>
@@ -484,9 +458,7 @@
                 <th class="p-3 text-right">Сумма</th>
               </tr>
             </thead>
-            <tbody id="estimateTableBody" class="divide-y divide-slate-800/80 font-mono">
-              <!-- Заполняется JS -->
-            </tbody>
+            <tbody id="estimateTableBody" class="divide-y divide-slate-800/80 font-mono"></tbody>
             <tfoot>
               <tr class="border-t-2 border-slate-700 app-subcard bg-slate-950/80 font-mono font-bold">
                 <td colspan="4" class="p-3 text-right uppercase">Итого модульная комплектация щита:</td>
@@ -499,7 +471,6 @@
           </table>
         </div>
 
-        <!-- Сопутствующие материалы -->
         <div class="mt-6 pt-5 border-t border-slate-800">
           <h3 class="app-text-muted text-xs font-mono uppercase font-bold text-slate-300 mb-3">Сопутствующие электромонтажные материалы:</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
@@ -520,15 +491,12 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- ВКЛАДКА 4: СИМУЛЯТОР АВАРИЙ И СЕЛЕКТИВНОСТИ -->
     <section id="tab-simulator" class="tab-content hidden space-y-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Кнопки сценариев -->
         <div class="app-card lg:col-span-1 space-y-3 bg-slate-900 border border-slate-800 rounded-2xl p-5">
           <div class="flex items-center justify-between mb-1">
             <h3 class="text-xs font-mono font-bold uppercase tracking-wider">Тестовые аварии</h3>
@@ -573,7 +541,6 @@
           </button>
         </div>
 
-        <!-- Отчет симулятора -->
         <div class="lg:col-span-2 space-y-4">
           <div id="simCard" class="app-card bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm">
             <div class="flex items-start justify-between gap-3">
@@ -603,7 +570,6 @@
             </div>
           </div>
 
-          <!-- Лог событий -->
           <div class="app-card bg-slate-900 border border-slate-800 rounded-2xl p-4">
             <div class="flex items-center justify-between mb-2">
               <span class="app-text-muted text-xs font-mono uppercase text-slate-400">Журнал событий щита</span>
@@ -617,7 +583,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -630,75 +595,52 @@
         <div class="p-4 rounded-xl bg-red-950/30 border border-red-700/50">
           <span class="font-bold text-red-400 text-sm block mb-2">Найдено в «Принципиальной схеме»</span>
           <ol class="list-decimal ml-5 space-y-1.5 text-slate-300 text-xs leading-relaxed">
-            <li><strong>Показана только фаза.</strong> Нейтраль и PE рисовались двумя оторванными полосами внизу — без входа питания, без связи с УЗО и без подводки к нагрузкам. Схема не читалась как электрическая.</li>
-            <li><strong>Ноль на входе УЗО не был нарисован вообще.</strong> Ни к одному УЗО не подходил проводник N, хотя УЗО 2P без нуля не работает.</li>
-            <li><strong>Шина PE была «в воздухе».</strong> Не показано, что PE приходит с ввода и не проходит через автомат, РН и УЗО.</li>
-            <li><strong>Ошибка разметки:</strong> в пяти местах стоял невалидный атрибут <code class="text-amber-400">text-anchor="middle font-bold"</code> — подписи состояния («ВКЛ»/«ОТКЛ») съезжали с центра блока.</li>
-            <li><strong>Узел разветвления после РН не был обозначен точками соединения</strong> — невозможно было отличить электрический контакт от простого пересечения линий.</li>
+            <li><strong>Показана только фаза.</strong> Нейтраль и PE рисовались двумя оторванными полосами внизу — без входа питания, без связи с УЗО и без подводки к нагрузкам.</li>
+            <li><strong>Ноль на входе УЗО не был нарисован вообще.</strong> Ни к одному УЗО не подходил проводник N.</li>
+            <li><strong>Шина PE была «в воздухе».</strong> Не показано, что PE приходит с ввода напрямую на шину.</li>
+            <li><strong>Ошибка разметки:</strong> некорректный атрибут <code>text-anchor="middle font-bold"</code>.</li>
+            <li><strong>Узел разветвления после РН не был обозначен точками соединения.</strong></li>
           </ol>
         </div>
 
         <div class="app-subcard p-4 rounded-xl bg-slate-950 border border-slate-800">
           <span class="font-bold text-amber-400 text-sm block mb-2">Найдено в «Эталонной авто-разводке»</span>
           <ol class="list-decimal ml-5 space-y-1.5 text-app-text-muted text-slate-300 text-xs leading-relaxed">
-            <li><strong>Шлейф между ВД1 снимался не с той клеммы.</strong> Питание на УЗО плиты должно идти с <strong>входных</strong> клемм УЗО розеток (1 и 3), а не с выхода и не отдельной парой от РН. Сейчас так и сделано: обе ветви сидят на одном узле, механизм УЗО 63А ток плиты не несёт, при этом монтаж — двумя перемычками.</li>
-            <li><strong>Ноль плиты не был подключён никуда.</strong> Клемма N УЗО 40А оставалась пустой. Теперь ноль плиты идёт на свободную клемму шины N.</li>
-            <li><strong>Фаза подавалась только на один автомат из пяти.</strong> Провод шёл на клемму B16 коридора, остальные четыре автомата оставались без питания. Теперь с выхода УЗО идёт <strong>один</strong> провод на гребёнку PIN 1P 63А, а гребёнка раздаёт фазу на все пять автоматов — как в железе.</li>
-            <li><strong>Заход в ВД1 рисовался снизу вверх:</strong> провод от нижней клеммы РН-263Т поднимался к УЗО снизу и «нырял» в клемму. Теперь провод подходит к входным клеммам ВД1 сверху — так, как это делается на монтаже.</li>
-            <li><strong>PE-шина не была подключена к вводу</strong>, вместо этого стоял бессмысленный провод «шина PE → эта же шина» (bus_pe_p1 → bus_pe_p2). Теперь жила PE ввода садится прямо на клемму 1 шины PE — отдельный клеммник не нужен и из схемы убран.</li>
-            <li><strong>Ноль плиты нигде не был показан</strong> — хотя он идёт отдельным проводом на клемму N УЗО 40А и не может собираться на общей шине.</li>
-            <li><strong>Баг Drag &amp; Drop:</strong> при перетаскивании модуля вставка шла по индексу, посчитанному до удаления источника, — модуль вставал не туда, куда его бросили.</li>
+            <li><strong>Шлейф между ВД1 снимался не с той клеммы.</strong> Питание на УЗО плиты должно идти с входных клемм УЗО розеток (1 и 3).</li>
+            <li><strong>Ноль плиты не был подключён.</strong> Теперь ноль плиты идёт напрямую в кабель плиты.</li>
+            <li><strong>Фаза подавалась только на один автомат из пяти.</strong> Теперь провод идёт на гребёнку PIN 1P 63А, питающую все 5 автоматов.</li>
+            <li><strong>Заход в ВД1 рисовался снизу вверх.</strong> Теперь провод подходит к входным клеммам ВД1 сверху.</li>
+            <li><strong>PE-шина не была подключена к вводу.</strong> Теперь жила ввода садится прямо на клемму 1 шины PE.</li>
           </ol>
         </div>
+      </div>
+    </section>
 
-        <h2 class="text-base font-bold pt-2">Инженерный анализ исключения УЗО 100мА и обновления номиналов</h2>
-        <p class="app-text-muted text-xs text-slate-400">Оценка надёжности и безопасности щита после исключения селективного УЗО 100мА:</p>
-
-        <div class="space-y-3 text-xs leading-relaxed">
-          
-          <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-700/50">
-            <span class="font-bold text-emerald-400 text-sm block mb-1">1. Почему исключение УЗО 100мА [S] полностью безопасно в квартире</span>
-            <p class="text-slate-300">
-              В вашей квартире <strong>100% линий защищены высокочувствительными УЗО 30 мА</strong> (плита защищена своим УЗО 40А/30мА, а все розетки и свет — мощным УЗО 63А/30мА).<br>
-              УЗО на 30 мА срабатывает при утечке 15–30 мА, что более чем в 3 раза чувствительнее противопожарного порога 100 мА. Соответственно, при малейшем нарушении изоляции кабеля отключение произойдёт задолго до риска воспламенения изоляции.<br>
-              <strong>Плюсы исключения:</strong> экономия ~3 250 ₽, высвобождение 2 модулей DIN для свободного охлаждения щита и минус 4 точки винтовых соединений на сквозном токе 63А.
-            </p>
+    <!-- ВКЛАДКА 6: GEMINI SVG -->
+    <section id="tab-gemini-svg" class="tab-content hidden space-y-4">
+      <div class="app-card bg-slate-900 border border-slate-800 rounded-2xl p-4 lg:p-5">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <h2 class="text-base font-bold flex items-center gap-2">
+              <span>Монтажная схема (gemini-svg.svg)</span>
+            </h2>
+            <p class="app-text-muted text-xs text-slate-400 mt-0.5">Векторный файл схемы распределительного щита и кабельных линий.</p>
           </div>
-
-          <div class="app-subcard p-4 rounded-xl bg-slate-950 border border-slate-800">
-            <span class="font-bold text-sky-400 text-sm block mb-1">2. Связка для электроплиты: УЗО 40А (тип АС) + Автомат C32</span>
-            <p class="app-text-muted text-slate-300">
-              Автомат C32 (арт. <em>MVA20-1-032-C</em>) допускает длительную мощность до 7.36 кВт. Даже при максимально возможной часовой перегрузке автомата ток не превысит $1.45 \times 32\text{А} = 46.4\text{А}$, что безопасно для УЗО 40А. Для линии варочной панели теперь идеально подходит медный кабель сечением <strong>ВВГнг 3х6 мм²</strong>.
-            </p>
+          <div class="flex items-center gap-2">
+            <a href="gemini-svg.svg" target="_blank" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 border border-amber-500/30 flex items-center gap-1.5 transition">
+              <span>↗️ Открыть оригинал</span>
+            </a>
+            <a href="gemini-svg.svg" download="gemini-svg.svg" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center gap-1.5 transition">
+              <span>📥 Скачать SVG</span>
+            </a>
           </div>
+        </div>
 
-          <div class="app-subcard p-4 rounded-xl bg-slate-950 border border-slate-800">
-            <span class="font-bold text-amber-400 text-sm block mb-1">3. Розетка в коридоре: ВА47-29 1P B16 (Кривая B)</span>
-            <p class="app-text-muted text-slate-300">
-              Характеристика расцепления <strong>B</strong> отсекает ток короткого замыкания в диапазоне $3\dots 5 \times I_n$ (для B16 это всего 48–80 А). Это обеспечивает мгновенное срабатывание даже при слабой петле «фаза-ноль» или повреждении шнура включенного в розетку прибора.
-            </p>
-          </div>
-
-          <div class="app-subcard p-4 rounded-xl bg-slate-950 border border-slate-800">
-            <span class="font-bold text-purple-400 text-sm block mb-1">4. Разделение шин N розеток и нуля плиты</span>
-            <p class="app-text-muted text-slate-300">
-              Поскольку УЗО розеток (63А) и УЗО плиты (40А) работают параллельно, их нулевые рабочие проводники должны быть <strong>строго изолированы друг от друга</strong>.<br>
-              • Модульная шина N на DIN-рейку подключается к выходу УЗО 63А и собирает нули всех розеток и света.<br>
-              • Ноль кабеля плиты подключается прямо на выходной контакт «N» УЗО плиты 40А.<br>
-              • Шина PE на DIN-рейке объединяет защитное заземление всей квартиры.
-            </p>
-          </div>
-
-          <div class="app-subcard p-4 rounded-xl bg-slate-950 border border-slate-800">
-            <span class="font-bold text-rose-400 text-sm block mb-1">5. Что стоит перепроверить (в схему не заложено)</span>
-            <ul class="list-disc ml-5 space-y-1 text-app-text-muted text-slate-300">
-              <li><strong>Тип А вместо АС для плиты.</strong> Инверторные и индукционные панели дают пульсирующий ток утечки — производители требуют УЗО типа А. Тип АС корректен только для чисто резистивной нагрузки.</li>
-              <li><strong>Номинал вводного автомата 63 А.</strong> Это 14,5 кВт. Если по ТУ выделено 5–7 кВт, вводной должен быть C25/C32 — иначе он не защищает вводный кабель и не согласован со счётчиком.</li>
-              <li><strong>Нет УЗИП.</strong> Для квартиры с РН-263Т логично добавить ограничитель импульсных перенапряжений типа 2 на вводе (2 модуля): реле спасает от скачков 265–300 В, но не от грозового импульса 1–6 кВ.</li>
-              <li><strong>Селективность C63 → C16.</strong> При токах КЗ выше ~600 А оба автомата уходят в мгновенную отсечку. Для квартиры допустимо, но идеальная пара — вводной с выдержкой или номинал на ступень ниже.</li>
-            </ul>
-          </div>
-
+        <!-- Контейнер для отображения SVG -->
+        <div class="w-full overflow-auto app-subcard bg-slate-950 rounded-xl p-4 border border-slate-800 flex justify-center items-center min-h-[600px]">
+          <object data="gemini-svg.svg" type="image/svg+xml" class="w-full max-w-5xl h-auto rounded-lg">
+            <img src="gemini-svg.svg" alt="Монтажная схема gemini-svg.svg" class="w-full max-w-5xl h-auto rounded-lg" />
+          </object>
         </div>
       </div>
     </section>
@@ -711,7 +653,6 @@
 
   <!-- Скрипты приложения -->
   <script>
-    /* --- ЗВУКОВОЙ ДВИЖОК WEB AUDIO API --- */
     let audioCtx = null;
     let soundEnabled = true;
 
@@ -767,7 +708,6 @@
       } catch (e) {}
     }
 
-    /* --- СВЕТЛАЯ И ТЁМНАЯ ТЕМА --- */
     let isDarkTheme = true;
     function toggleTheme() {
       isDarkTheme = !isDarkTheme;
@@ -792,9 +732,7 @@
       renderSchematicSvg();
     }
 
-    /* --- СПИСОК ОБОРУДОВАНИЯ (БЕЗ УЗО 100мА) --- */
     const devices = [
-      // РЕЙКА 1: Вводная часть и 2 групповых УЗО (8 DIN)
       {
         id: 'dev_mva_in',
         row: 1,
@@ -879,7 +817,6 @@
           { id: 'dev_rcd_cooker_N_out', label: 'N вых', color: 'blue' }
         ]
       },
-      // РЕЙКА 2: Отходящие автоматы + шины N и PE
       {
         id: 'dev_ab_cooker',
         row: 2,
@@ -994,7 +931,6 @@
           { id: 'dev_ab_bed_light_L_out', label: 'Выход L', color: 'red' }
         ]
       },
-      // ШИНА N НА DIN-РЕЙКУ (СИНЯЯ)
       {
         id: 'bus_n',
         row: 2,
@@ -1021,7 +957,6 @@
           { id: 'bus_n_p9', label: 'N9', color: 'blue' }
         ]
       },
-      // ШИНА PE НА DIN-РЕЙКУ (ЖЕЛТО-ЗЕЛЕНАЯ)
       {
         id: 'bus_pe',
         row: 2,
@@ -1052,13 +987,11 @@
 
     let currentSelectedId = 'dev_mva_in';
     let currentVoltage = 230;
-
-    /* --- СИСТЕМА ПРОВОДКИ (WIRING) --- */
     let wiringModeActive = false;
-    let selectedWireColor = 'phase'; // 'phase' | 'neutral' | 'pe'
+    let selectedWireColor = 'phase';
     let wireStartPort = null;
-    let userWires = []; // { id, from, to, type, color }
-    let combMounted = true; // гребёнка PIN 1P 63А сидит на входных клеммах пяти автоматов
+    let userWires = [];
+    let combMounted = true;
 
     function toggleWiringMode() {
       wiringModeActive = !wiringModeActive;
@@ -1105,7 +1038,6 @@
           cancelWireSelection();
           return;
         }
-        // Создаем провод
         const newWire = {
           id: 'wire_' + Date.now(),
           from: wireStartPort,
@@ -1147,41 +1079,26 @@
       addSimLogEntry('Все провода удалены с панели монтажа.');
     }
 
-    // Эталонная авто-разводка (без УЗО 100мА, шлейф вход→вход между двумя ВД1)
     function applyAutoWiring() {
       userWires = [
-        // 1. Ввод: автомат 63А → РН-263Т (L и N)
         { id: 'w1', from: 'dev_mva_in_L_out', to: 'dev_rn_L_in', type: 'phase', color: '#ef4444' },
         { id: 'w2', from: 'dev_mva_in_N_out', to: 'dev_rn_N_in', type: 'neutral', color: '#3b82f6' },
-
-        // 2. РН → УЗО розеток/света 63А (тип А). Заход сверху, на входные клеммы 1 и 3.
         { id: 'w3', from: 'dev_rn_L_out', to: 'dev_rcd_sockets_L_in', type: 'phase', color: '#ef4444' },
         { id: 'w4', from: 'dev_rn_N_out', to: 'dev_rcd_sockets_N_in', type: 'neutral', color: '#3b82f6' },
-
-        // 3. Шлейф на УЗО плиты — со ВХОДНЫХ клемм УЗО розеток (1 и 3), а не с выхода.
-        //    Так плита подключена параллельно: механизм УЗО розеток ток плиты не несёт.
         { id: 'w5', from: 'dev_rcd_sockets_L_in', to: 'dev_rcd_cooker_L_in', type: 'phase', color: '#ef4444' },
         { id: 'w6', from: 'dev_rcd_sockets_N_in', to: 'dev_rcd_cooker_N_in', type: 'neutral', color: '#3b82f6' },
-
-        // 4. УЗО плиты → автомат C32
         { id: 'w7', from: 'dev_rcd_cooker_L_out', to: 'dev_ab_cooker_L_in', type: 'phase', color: '#ef4444' },
-
-        // 5. УЗО розеток → ОДИН провод на гребёнку PIN 1P 63А, заход на автомат «Розетки спальня»
         { id: 'w8', from: 'dev_rcd_sockets_L_out', to: 'dev_ab_bed_soc_L_in', type: 'phase', color: '#ef4444' },
-
-        // 6. Ноль розеток → шина N, клемма 1
-        //    Ноль плиты на шину НЕ садится — он уходит в кабель плиты (см. вывод кабеля на панели)
         { id: 'w9', from: 'dev_rcd_sockets_N_out', to: 'bus_n_p1', type: 'neutral', color: '#3b82f6' }
       ];
-      // PE на щите никуда не разводится проводом: жила ввода садится прямо на первую клемму шины PE.
       combMounted = true;
       playClickSound(true);
       renderWiringSvg();
       updateInspectorDevice();
-      addSimLogEntry('Смонтирована эталонная схема: Ввод 63А → РН-263Т → УЗО розеток 63А → шлейфом (вход→вход) УЗО плиты 40А. Гребёнка PIN 1P 63А питает пять автоматов. Ноль розеток — на шину N (клемма 1), ноль плиты — сразу в кабель плиты.');
+      addSimLogEntry('Смонтирована эталонная схема: Ввод 63А → РН-263Т → УЗО 63А → шлейфом УЗО плиты 40А. Гребёнка PIN 1P 63А питает пять автоматов.');
     }
 
-        function renderWiringSvg() {
+    function renderWiringSvg() {
       const svg = document.getElementById('wiringCanvasSvg');
       if (!svg) return;
       svg.innerHTML = '';
@@ -1189,8 +1106,6 @@
       const NS = 'http://www.w3.org/2000/svg';
       const rect = svg.getBoundingClientRect();
 
-      // Клемма «смотрит» вверх или вниз. Провод подходит с той стороны, куда смотрит клемма,
-      // поэтому заход в ВД1 всегда сверху, на входные клеммы, а не петлёй снизу.
       const anchorOf = el => {
         const r = el.getBoundingClientRect();
         const mod = el.closest('.breaker-body') || el.parentElement;
@@ -1220,20 +1135,16 @@
         let d;
 
         if (sameRow && A.dir === 1 && B.dir === -1) {
-          // Один ряд, выход снизу → вход сверху: вниз, по промежутку между модулями, над рядом,
-          // и вертикальный заход в верхнюю клемму сверху.
           const laneBottom = Math.max(A.bottom, B.bottom) + 8 + dy;
           const laneTop = Math.min(A.top, B.top) - 12 - dy;
           const corridor = (B.x > A.x ? B.left - 4 : B.right + 4) + (wire.type === 'neutral' ? 4 : -4);
           d = `M ${A.x} ${A.y} L ${A.x} ${laneBottom} L ${corridor} ${laneBottom} L ${corridor} ${laneTop} L ${B.x} ${laneTop} L ${B.x} ${B.y}`;
         } else if (sameRow) {
-          // Один ряд, обе клеммы с одной стороны — перемычка-шлейф над или под модулями
           const lane = A.dir === -1
             ? Math.min(A.top, B.top) - 12 - dy
             : Math.max(A.bottom, B.bottom) + 8 + dy;
           d = `M ${A.x} ${A.y} L ${A.x} ${lane} L ${B.x} ${lane} L ${B.x} ${B.y}`;
         } else if (A.dir === 1 && B.dir === -1) {
-          // Разные ряды: вниз, по своей полосе между рядами, и вертикально вниз в верхнюю клемму
           const lane = A.y + 40 + (wi % 3) * 5;
           d = `M ${A.x} ${A.y} L ${A.x} ${lane} L ${B.x} ${lane} L ${B.x} ${B.y}`;
         } else {
@@ -1266,7 +1177,6 @@
         });
       });
 
-      // ГРЕБЁНКА PIN 1P 63A — сидит на входных клеммах пяти автоматов, вместо пяти проводов
       if (combMounted) {
         const ids = ['dev_ab_corr_soc', 'dev_ab_hall_soc', 'dev_ab_bed_soc', 'dev_ab_hall_light', 'dev_ab_bed_light'];
         const pins = ids
@@ -1301,18 +1211,16 @@
           bar.setAttribute('stroke', '#fbbf24');
           bar.setAttribute('stroke-width', '1.2');
           const ttl = document.createElementNS(NS, 'title');
-          ttl.textContent = 'Гребёнка PIN 1P 63А (YNS21-1-063-22-12) — питание пяти автоматов';
+          ttl.textContent = 'Гребёнка PIN 1P 63А — питание пяти автоматов';
           bar.appendChild(ttl);
           svg.appendChild(bar);
         }
       }
 
-      // Ноль плиты уходит в кабель, а не на шину N — показываем вывод жилы
       if (userWires.length > 0) {
         const nPort = document.getElementById('port-dev_rcd_cooker_N_out');
         if (nPort) {
           const A = anchorOf(nPort);
-
           const tail = document.createElementNS(NS, 'path');
           tail.setAttribute('d', `M ${A.x} ${A.y} L ${A.x} ${A.y + 26}`);
           tail.setAttribute('fill', 'none');
@@ -1341,9 +1249,7 @@
       }
     }
 
-    /* --- ПОЛНОЦЕННЫЙ DRAG & DROP С ПЕРЕСТАНОВКОЙ МЕСТАМИ --- */
     let draggedDevId = null;
-
 
     function handleModuleDragStart(e, id) {
       draggedDevId = id;
@@ -1391,10 +1297,8 @@
 
       sourceDev.row = targetDev.row;
       devices.splice(devices.indexOf(sourceDev), 1);
-      // индекс цели пересчитываем ПОСЛЕ удаления источника, иначе вставка уезжает на позицию
       devices.splice(devices.indexOf(targetDev), 0, sourceDev);
 
-      // Пересчитываем локальный порядок
       normalizeDevicesOrder();
       renderDinRails();
       renderWiringSvg();
@@ -1429,7 +1333,6 @@
       });
     }
 
-    /* --- ОТРИСОВКА МОДУЛЕЙ И ШИН --- */
     function renderDinRails() {
       const r1 = document.getElementById('dinRow1');
       const r2 = document.getElementById('dinRow2');
@@ -1444,7 +1347,6 @@
       row1Devs.forEach(dev => r1.appendChild(createModuleElement(dev)));
       row2Devs.forEach(dev => r2.appendChild(createModuleElement(dev)));
 
-      // Подсчет модулей
       const count1 = row1Devs.reduce((sum, d) => sum + d.widthMod, 0);
       const count2 = row2Devs.reduce((sum, d) => sum + d.widthMod, 0);
       const c1El = document.getElementById('rail1ModCount');
@@ -1462,7 +1364,6 @@
       
       const widthClass = dev.widthMod === 2 ? 'w-28 sm:w-32' : 'w-16 sm:w-20';
       
-      // Специфический вид для шин N / PE (изолированный корпус)
       if (isBus) {
         const isPE = dev.type === 'bus_pe';
         const shell = isPE
@@ -1471,7 +1372,6 @@
         const screw = isPE ? 'border-yellow-200/80' : 'border-blue-200/80';
 
         el.className = `breaker-body ${widthClass} h-16 rounded-lg border ${shell} px-1 py-0.5 flex flex-col justify-between items-center relative shadow-lg cursor-grab`;
-        // цвет корпуса шины задаём инлайном с !important, иначе .breaker-body перекрывает его
         el.style.setProperty('background', isPE
           ? 'linear-gradient(180deg, #bef264 0%, #65a30d 45%, #3f6212 100%)'
           : 'linear-gradient(180deg, #93c5fd 0%, #2563eb 45%, #1e3a8a 100%)', 'important');
@@ -1485,7 +1385,6 @@
         el.ondrop = (e) => handleModuleDropOnTarget(e, dev.id);
         el.onclick = () => selectDevice(dev.id);
 
-        // Винт под провод — шляпка с прорезью, как на шине ШНИ
         const screwEl = (p) => `<div id="port-${p.id}" onclick="handlePortClick('${p.id}', event)" class="terminal-port w-3 h-3 rounded-full bg-slate-900 border ${screw} flex items-center justify-center shadow-inner cursor-pointer" title="${p.label}"><span class="block w-2 h-px bg-slate-400/80 rounded"></span></div>`;
 
         const top = dev.ports.slice(0, 5);
@@ -1502,8 +1401,6 @@
         return el;
       }
 
-
-      // Непрозрачный корпус автомата / УЗО / РН
       el.className = `breaker-body ${widthClass} h-52 rounded-2xl border ${isSelected ? 'border-amber-400 ring-2 ring-amber-400/40' : 'border-zinc-700'} p-2 flex flex-col justify-between items-center text-center relative shadow-2xl cursor-grab text-white`;
       el.id = 'module-' + dev.id;
       el.draggable = true;
@@ -1514,7 +1411,6 @@
       el.ondrop = (e) => handleModuleDropOnTarget(e, dev.id);
       el.onclick = () => selectDevice(dev.id);
 
-      // Клеммы сверху (цвет и подпись берутся из порта)
       const portText = p => p.color === 'blue' ? 'N' : (p.color === 'yellow' ? 'PE' : 'L');
       const portColor = p => p.color === 'blue' ? 'text-blue-400' : (p.color === 'yellow' ? 'text-yellow-300' : 'text-red-400');
       const portEl = (p, extra) => `<div id="port-${p.id}" onclick="handlePortClick('${p.id}', event)" class="terminal-port w-4 h-4 rounded-full bg-zinc-800 border border-zinc-600 flex items-center justify-center text-[7px] ${portColor(p)} font-mono cursor-pointer ${extra || ''}" title="${p.label}">${portText(p)}</div>`;
@@ -1527,7 +1423,6 @@
       }
       screwTop += '</div>';
 
-      // Маркировка аппарата
       const header = `
         <div class="w-full px-0.5">
           <div class="text-[9px] font-mono font-bold tracking-tight text-amber-400 truncate">${dev.shortName}</div>
@@ -1536,7 +1431,6 @@
         </div>
       `;
 
-      // Середина (Вольтметр реле или Окошко расцепителя)
       let middle = '';
       if (dev.type === 'relay') {
         middle = `
@@ -1556,7 +1450,6 @@
         `;
       }
 
-      // Рычаг
       const leverState = dev.status ? 'on' : 'off';
       const lever = `
         <div onclick="toggleBreaker('${dev.id}', event)" class="cursor-pointer py-0.5 px-2" title="Щелкните для переключения">
@@ -1566,7 +1459,6 @@
         </div>
       `;
 
-      // Низ модуля (Выходные клеммы)
       let footer = '<div class="w-full">';
       footer += `<div class="text-[8px] font-mono text-zinc-400 truncate leading-tight">${dev.nominal.split('·')[0]}</div>`;
       footer += '<div class="flex items-center justify-around w-full mt-1">';
@@ -1581,7 +1473,6 @@
       return el;
     }
 
-    /* --- ВЫБОР И ИНСПЕКТОР АППАРАТА --- */
     function selectDevice(id) {
       currentSelectedId = id;
       const dev = devices.find(d => d.id === id);
@@ -1613,7 +1504,6 @@
       else if (dev.type === 'bus_n') typeBadge.innerText = 'Шина N на DIN-рейку';
       else if (dev.type === 'bus_pe') typeBadge.innerText = 'Шина PE на DIN-рейку';
 
-      // Список подключенных проводов к выбранному модулю
       const wiresList = document.getElementById('inspectWiresList');
       wiresList.innerHTML = '';
       const connected = userWires.filter(w => w.from.startsWith(dev.id) || w.to.startsWith(dev.id));
@@ -1737,7 +1627,6 @@
       }
     }
 
-    /* --- УПРАВЛЕНИЕ ВКЛАДКАМИ --- */
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1758,8 +1647,7 @@
       if (tabId === 'tab-din') setTimeout(renderWiringSvg, 50);
     }
 
-    /* --- ПРИНЦИПИАЛЬНАЯ СХЕМА (SVG) БЕЗ УЗО 100мА --- */
-        function renderSchematicSvg() {
+    function renderSchematicSvg() {
       const svg = document.getElementById('schematicSvg');
       if (!svg) return;
 
@@ -1809,16 +1697,13 @@
       let dots = '';
       let labels = '';
 
-      /* ================= ВВОД И РАСПРЕДЕЛЕНИЕ L / N ================= */
       wires += Ln(180, 68, 180, 100, CL);
       wires += Ln(270, 68, 270, 100, CN);
       wires += Ln(1268, 68, 1268, 880, CP, 3.5);
 
-      // автомат → реле напряжения
       wires += Ln(180, 166, 180, 210, col(inOn, CL));
       wires += Ln(270, 166, 270, 210, col(inOn, CN));
 
-      // РН → две НЕЗАВИСИМЫЕ ветви (L узел 320, N узел 305)
       wires += Ln(180, 286, 180, 380, col(rnOn, CL));
       wires += `<path d="M 180 320 L 262 320 A 8 8 0 0 1 278 320 L 790 320" fill="none" stroke="${col(rnOn, CL)}" stroke-width="3" stroke-linecap="round"/>`;
       wires += Ln(790, 320, 790, 380, col(rnOn, CL));
@@ -1827,13 +1712,11 @@
       dots += Jd(180, 320, col(rnOn, CL));
       dots += Jd(270, 305, col(rnOn, CN));
 
-      /* ================= ВЕТВЬ ПЛИТЫ ================= */
       wires += Ln(180, 458, 180, 545, col(cookOn, CL));
       wires += Ln(180, 615, 180, 686, col(cookOn && on('dev_ab_cooker'), CL));
       wires += Pn('270,458 270,820 160,820 160,780', col(cookOn, CN));
       wires += Ln(200, 780, 200, 880, col(cookOn, CP));
 
-      /* ================= ВЕТВЬ РОЗЕТОК И СВЕТА ================= */
       wires += Ln(790, 458, 790, 516, col(sockOn, CL));
       wires += Pn('870,458 870,486 1190,486 1190,840', col(sockOn, CN));
 
@@ -1842,14 +1725,12 @@
         wires += Ln(m.cx, 528, m.cx, 545, col(sockOn, CL));
         wires += Ln(m.cx, 615, m.cx, 686, col(live, CL));
         wires += Ln(m.cx - 20, 780, m.cx - 20, 840, col(sockOn, CN));
-        // PE пересекает шину N «с прыжком» — соединения нет
         wires += Ln(m.cx + 20, 780, m.cx + 20, 834, col(true, CP));
         wires += Ln(m.cx + 20, 848, m.cx + 20, 880, col(true, CP));
         dots += Jd(m.cx - 20, 840, col(sockOn, CN));
         dots += Jd(m.cx + 20, 880, CP);
       });
 
-      /* ================= АППАРАТЫ ================= */
       boxes += box(120, 100, 210, 66, 'ВА47-29 2P 63 А (C)', 'MVA20-2-063-C',
         inOn ? 'ВКЛ · L + N' : 'ОТКЛ · щит обесточен',
         inOn ? '#10b981' : '#ef4444', inOn ? '#4ade80' : '#f87171', "toggleBreaker('dev_mva_in')");
@@ -1884,12 +1765,10 @@
       boxes += loadBox(920, '💡', 'Свет зал', '3×1,5 мм²', 'кривая C', '#10b981');
       boxes += loadBox(1060, '💡', 'Свет спальня', '3×1,5 мм²', 'кривая C', '#10b981');
 
-      /* ================= ШИНЫ ================= */
       boxes += `<rect x="430" y="516" width="730" height="12" rx="4" fill="#78350f" stroke="#f59e0b" stroke-width="1.5"/>`;
       boxes += `<line x1="400" y1="840" x2="1200" y2="840" stroke="#3b82f6" stroke-width="7" stroke-linecap="round"/>`;
       boxes += `<line x1="30" y1="880" x2="1268" y2="880" stroke="#eab308" stroke-width="7" stroke-linecap="round"/>`;
 
-      /* ================= КЛЕММЫ ================= */
       terms += Tm(180, 100, CL) + Tm(270, 100, CN) + Tm(180, 166, col(inOn, CL)) + Tm(270, 166, col(inOn, CN));
       terms += Tm(180, 210, col(inOn, CL)) + Tm(270, 210, col(inOn, CN)) + Tm(180, 286, col(rnOn, CL)) + Tm(270, 286, col(rnOn, CN));
       terms += Tm(180, 380, col(rnOn, CL)) + Tm(270, 380, col(rnOn, CN)) + Tm(180, 458, col(cookOn, CL)) + Tm(270, 458, col(cookOn, CN));
@@ -1909,7 +1788,6 @@
       dots += Jd(200, 880, CP);
       dots += Jd(1268, 880, CP);
 
-      /* ================= НАДПИСИ ================= */
       labels += Tx(172, 88, 'L1', CL, 9, '700', 'end', 'sans-serif');
       labels += Tx(278, 88, 'N', CN, 9, '700', 'start', 'sans-serif');
       labels += Tx(1258, 88, 'PE', CP, 9, '700', 'end', 'sans-serif');
@@ -1931,9 +1809,7 @@
       `;
     }
 
-    /* --- СМЕТА И СПЕЦИФИКАЦИЯ (БЕЗ УЗО 100мА) --- */
     function populateEstimateTable() {
-
       const tbody = document.getElementById('estimateTableBody');
       if (!tbody) return;
 
@@ -1942,106 +1818,16 @@
       let totalMods = 0;
 
       const estimateItems = [
-        {
-          num: 1,
-          name: 'Автоматический выключатель 2P 63А (Вводной)',
-          article: 'MVA20-2-063-C',
-          series: 'IEK KARAT ВА47-29',
-          char: '2P · 63А · Кривая C · 4.5кА',
-          mods: 2,
-          qty: 1,
-          price: 520
-        },
-        {
-          num: 2,
-          name: 'Реле напряжения мультифункциональное',
-          article: 'РН-263Т',
-          series: 'Новатэк-Электро',
-          char: '63А · TrueRMS · Термодатчик клемм',
-          mods: 2,
-          qty: 1,
-          price: 5050
-        },
-        {
-          num: 3,
-          name: 'УЗО 2P 63А 30мА тип А (Розетки и Свет)',
-          article: 'MDV10-2-063-030-A',
-          series: 'IEK KARAT ВД1-63',
-          char: '2P · 63А · 30мА · Тип А · Электромеханика',
-          mods: 2,
-          qty: 1,
-          price: 2150
-        },
-        {
-          num: 4,
-          name: 'УЗО 2P 40А 30мА тип АС (Электроплита)',
-          article: 'MDV10-2-040-030',
-          series: 'IEK KARAT ВД1-63',
-          char: '2P · 40А · 30мА · Тип АС · Электромеханика',
-          mods: 2,
-          qty: 1,
-          price: 1650
-        },
-        {
-          num: 5,
-          name: 'Автоматический выключатель 1P C32 (Плита)',
-          article: 'MVA20-1-032-C',
-          series: 'IEK KARAT ВА47-29',
-          char: '1P · 32А · Кривая C · 4.5кА',
-          mods: 1,
-          qty: 1,
-          price: 240
-        },
-        {
-          num: 6,
-          name: 'Автоматический выключатель 1P B16 (Коридор)',
-          article: 'MVA20-1-016-B',
-          series: 'IEK KARAT ВА47-29',
-          char: '1P · 16А · Кривая B · 4.5кА',
-          mods: 1,
-          qty: 1,
-          price: 240
-        },
-        {
-          num: 7,
-          name: 'Автоматический выключатель 1P C16 (Зал/Спальни/Свет)',
-          article: 'MVA20-1-016-C',
-          series: 'IEK KARAT ВА47-29',
-          char: '1P · 16А · Кривая C · 4.5кА',
-          mods: 4,
-          qty: 4,
-          price: 190
-        },
-        {
-          num: 8,
-          name: 'Шина нулевая N на DIN-рейку (изолированная, 9 клемм)',
-          article: 'YND10-6-08',
-          series: 'IEK Модуль',
-          char: '100А · 9 клемм (6х9 мм)',
-          mods: 2,
-          qty: 1,
-          price: 180
-        },
-        {
-          num: 9,
-          name: 'Шина заземления PE на DIN-рейку (ж/з, 9 клемм)',
-          article: 'YND10-6-08-PE',
-          series: 'IEK Модуль',
-          char: '100А · 9 клемм (6х9 мм)',
-          mods: 2,
-          qty: 1,
-          price: 180
-        },
-        {
-          num: 10,
-          name: 'Шина соединительная типа PIN 1P 63А (12 мод.)',
-          article: 'YNS21-1-063-22-12',
-          series: 'IEK Аксессуары',
-          char: '1 Полюс · 63А · Гребенка штыревая',
-          mods: 0,
-          qty: 1,
-          price: 270
-        }
+        { num: 1, name: 'Автоматический выключатель 2P 63А (Вводной)', article: 'MVA20-2-063-C', series: 'IEK KARAT ВА47-29', char: '2P · 63А · Кривая C · 4.5кА', mods: 2, qty: 1, price: 520 },
+        { num: 2, name: 'Реле напряжения мультифункциональное', article: 'РН-263Т', series: 'Новатэк-Электро', char: '63А · TrueRMS · Термодатчик клемм', mods: 2, qty: 1, price: 5050 },
+        { num: 3, name: 'УЗО 2P 63А 30мА тип А (Розетки и Свет)', article: 'MDV10-2-063-030-A', series: 'IEK KARAT ВД1-63', char: '2P · 63А · 30мА · Тип А · Электромеханика', mods: 2, qty: 1, price: 2150 },
+        { num: 4, name: 'УЗО 2P 40А 30мА тип АС (Электроплита)', article: 'MDV10-2-040-030', series: 'IEK KARAT ВД1-63', char: '2P · 40А · 30мА · Тип АС · Электромеханика', mods: 2, qty: 1, price: 1650 },
+        { num: 5, name: 'Автоматический выключатель 1P C32 (Плита)', article: 'MVA20-1-032-C', series: 'IEK KARAT ВА47-29', char: '1P · 32А · Кривая C · 4.5кА', mods: 1, qty: 1, price: 240 },
+        { num: 6, name: 'Автоматический выключатель 1P B16 (Коридор)', article: 'MVA20-1-016-B', series: 'IEK KARAT ВА47-29', char: '1P · 16А · Кривая B · 4.5кА', mods: 1, qty: 1, price: 240 },
+        { num: 7, name: 'Автоматический выключатель 1P C16 (Зал/Спальни/Свет)', article: 'MVA20-1-016-C', series: 'IEK KARAT ВА47-29', char: '1P · 16А · Кривая C · 4.5кА', mods: 4, qty: 4, price: 190 },
+        { num: 8, name: 'Шина нулевая N на DIN-рейку (изолированная, 9 клемм)', article: 'YND10-6-08', series: 'IEK Модуль', char: '100А · 9 клемм (6х9 мм)', mods: 2, qty: 1, price: 180 },
+        { num: 9, name: 'Шина заземления PE на DIN-рейку (ж/з, 9 клемм)', article: 'YND10-6-08-PE', series: 'IEK Модуль', char: '100А · 9 клемм (6х9 мм)', mods: 2, qty: 1, price: 180 },
+        { num: 10, name: 'Шина соединительная типа PIN 1P 63А (12 мод.)', article: 'YNS21-1-063-22-12', series: 'IEK Аксессуары', char: '1 Полюс · 63А · Гребенка штыревая', mods: 0, qty: 1, price: 270 }
       ];
 
       estimateItems.forEach(item => {
@@ -2073,7 +1859,6 @@
       document.getElementById('estimateTotalMods').innerText = `${totalMods} DIN`;
     }
 
-    /* --- СИМУЛЯТОР АВАРИЙ --- */
     function triggerSim(type) {
       playTripSound();
       const badge = document.getElementById('simBadge');
@@ -2202,7 +1987,6 @@
       addSimLogEntry('Журнал очищен пользователем.');
     }
 
-    /* --- ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ --- */
     window.onload = function() {
       renderDinRails();
       renderSchematicSvg();
